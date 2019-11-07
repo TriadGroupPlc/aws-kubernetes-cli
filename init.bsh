@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Initialises kubectl environment
+# provided you run the container with -v options to reference .kube on the host
+# machine, you only need to run this once.
+
+aws --region $AWS_DEFAULT_REGION eks update-kubeconfig --name $CLUSTER
