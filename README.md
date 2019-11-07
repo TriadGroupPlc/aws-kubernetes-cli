@@ -1,5 +1,5 @@
 
-# AWS CLI Image with kubectl 
+# AWS CLI Image with kubectl, eksctl and terraform
 
 Adapted from https://hub.docker.com/r/mesosphere/aws-cli
 
