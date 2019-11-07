@@ -1,6 +1,8 @@
 
 # AWS CLI Image with kubectl 
 
+Adapted from https://hub.docker.com/r/mesosphere/aws-cli
+
 This image, when run, will mount the current working director on the host to /project and maintain aws cli and kubectl configuration in the local host working directory. When first run, execute the /init.bsh file to configure your environment. This only needs to be done the first time you run the container from a given host directory as the .kube and .aws directories are mounted from the host.
 
 ## Build
@@ -19,4 +21,4 @@ This image, when run, will mount the current working director on the host to /pr
     -v "//$(pwd)/.kube:/root/.kube" \
     awscli bash
 
-On first run from any given host directory, use /init.bsh to initialise the .kube for this environment.
+On first run from any given host directory, use /init.bsh to initialise the .kube for this environment. Not needed on subsequent runs of the container from the same host directory (with the same docker run parameters).
