@@ -1,7 +1,7 @@
 ##
 FROM alpine:latest
 
-RUN apk update;apk add bash python python3 curl groff vim
+RUN apk --update add --no-cache bash python python3 curl groff vim ncurses; apk add --no-cache --virtual git-dep git 
 
 RUN curl --silent --location https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 RUN python /tmp/get-pip.py --user
@@ -28,6 +28,12 @@ RUN unzip /tmp/terraform.zip -d /usr/local/bin
 RUN curl --silent --location https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator -o /tmp/aws-iam-authenticator
 RUN chmod +x /tmp/aws-iam-authenticator 
 RUN mv /tmp/aws-iam-authenticator  /usr/local/bin
+
+# Install Kubens and Kubectx
+RUN git clone https://github.com/ahmetb/kubectx /opt/kubectx \
+    && ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx \ 
+    && ln -s /opt/kubectx/kubens /usr/local/bin/kubens \
+    && apk del git-dep
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
