@@ -21,6 +21,9 @@ RUN curl --silent --location https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.
 RUN chmod +x /tmp/kubectl
 RUN mv /tmp/kubectl /usr/local/bin
 
+RUN curl --silent --location "https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_linux_amd64.zip" -o /tmp/terraform.zip
+RUN unzip /tmp/terraform.zip -d /usr/local/bin
+
 # Install aws-iam-authenticator
 RUN curl --silent --location https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator -o /tmp/aws-iam-authenticator
 RUN chmod +x /tmp/aws-iam-authenticator 
