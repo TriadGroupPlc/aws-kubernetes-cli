@@ -44,3 +44,5 @@ VOLUME /root/.aws
 VOLUME /root/.kube
 VOLUME /project
 COPY init.bsh /
+RUN dos2unix /init.bsh
+RUN chmod a+x /init.bsh
