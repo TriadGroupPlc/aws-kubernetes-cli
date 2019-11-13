@@ -45,4 +45,4 @@ VOLUME /root/.kube
 VOLUME /project
 COPY init.bsh /
 RUN dos2unix /init.bsh
-RUN chmod a+x /init.bach
+RUN chmod a+x /init.bsh
